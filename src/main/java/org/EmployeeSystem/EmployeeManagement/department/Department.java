@@ -11,6 +11,7 @@ public class Department {
     private String description;
 
     public Department() {
+        super();
     }
 
     public Department(String id, String name, String description) {
@@ -41,5 +42,14 @@ public class Department {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

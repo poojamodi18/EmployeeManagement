@@ -24,13 +24,13 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer id, String firstName, String lastName, String city, String mobileNumber, Department department, String email, String username, String password) {
+    public Employee(Integer id, String firstName, String lastName, String city, String mobileNumber, String departmentId, String email, String username, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
         this.mobileNumber = mobileNumber;
-        this.department = department;
+        this.department = new Department(departmentId," "," ");
         this.email = email;
         this.username = username;
         this.password = password;
@@ -106,5 +106,20 @@ public class Employee {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", city='" + city + '\'' +
+                ", mobileNumber='" + mobileNumber + '\'' +
+                ", department=" + department.toString() +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
