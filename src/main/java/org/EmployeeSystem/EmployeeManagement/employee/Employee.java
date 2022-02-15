@@ -5,7 +5,6 @@ import org.EmployeeSystem.EmployeeManagement.department.Department;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Employee {
@@ -108,18 +107,4 @@ public class Employee {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", city='" + city + '\'' +
-                ", mobileNumber='" + mobileNumber + '\'' +
-                ", department=" + department.toString() +
-                ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }

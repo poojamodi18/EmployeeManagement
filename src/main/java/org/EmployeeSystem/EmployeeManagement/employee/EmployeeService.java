@@ -12,13 +12,21 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public List<Employee> getAllEmployee() {
+    public List<Employee> getAllEmployee(String departmentID) {
         List<Employee> employees = new ArrayList<>();
-        employeeRepository.findAll().forEach(employees::add);
+        employeeRepository.findAll().forEach(emp->{
+            if(emp.getDepartment().getId().equals(departmentID)){
+                employees.add(emp);
+            }
+        });
         return employees;
     }
 
     public void addEmployee(Employee employee) {
         employeeRepository.save(employee);
+    }
+
+    public Employee getEmployee(Integer employeeID) {
+        return employeeRepository.findById(employeeID).orElse(null);
     }
 }
