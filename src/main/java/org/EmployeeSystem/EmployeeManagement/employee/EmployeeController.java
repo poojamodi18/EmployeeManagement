@@ -17,7 +17,6 @@ public class EmployeeController {
 
     @RequestMapping("/department/{departmentID}/employee")
     public List<Employee> getAllEmployee(@PathVariable String departmentID){
-        System.out.println(departmentID);
         return employeeService.getAllEmployee(departmentID);
     }
 
@@ -29,10 +28,20 @@ public class EmployeeController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/department/{departmentID}/employee")
     public void addEmployee(@RequestBody Employee employee, @PathVariable String departmentID){
-        System.out.println(departmentID);
-        System.out.println(employee);
-        employee.setDepartment(departmentService.getDepartment(departmentID));
-        System.out.println(employee);
+//        employee.setDepartment(departmentService.getDepartment(departmentID));
+        employee.setDepartment(new Department(departmentID,"",""));
         employeeService.addEmployee(employee);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/department/{departmentID}/employee/{id}")
+    public void deleteEmployee(@PathVariable Integer id){
+        employeeService.deleteEmployee(id);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/department/{departmentID}/employee/{id}")
+    public void updateEmployee(@RequestBody Employee employee,@PathVariable Integer id,@PathVariable String departmentID){
+        employee.setDepartment(new Department(departmentID,"",""));
+        employeeService.updateEmployee(employee,id);
+    }
+
 }

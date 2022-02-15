@@ -29,4 +29,13 @@ public class EmployeeService {
     public Employee getEmployee(Integer employeeID) {
         return employeeRepository.findById(employeeID).orElse(null);
     }
+
+    public void deleteEmployee(Integer id) {
+        employeeRepository.deleteById(id);
+    }
+
+
+    public void updateEmployee(Employee employee, Integer id) {
+        employeeRepository.save(employee);
+    }
 }
